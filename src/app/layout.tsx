@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import { Analytics } from "@vercel/analytics/next";
 
 import { AppSidebar } from "@/components/app-sidebar";
 import TopNavbar from "@/components/Shared/navbar";
@@ -49,6 +50,7 @@ export default function RootLayout({
             <ToastContainer />
           </main>
         </SidebarProvider>
+        <Analytics />
       </body>
     </html>
   );
