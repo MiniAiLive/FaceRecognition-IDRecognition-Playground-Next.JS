@@ -9,7 +9,7 @@ import face_2 from "@/assets/id-document-liveness/img2.jpg";
 import face_3 from "@/assets/id-document-liveness/img3.png";
 // import face_4 from "@/assets/id-document-liveness/img3.png";
 import LoadingPage from "./Loader";
-import { ID_LIVE_BASE_URL } from "@/lib/utils";
+import { API_BASE_URL } from "@/lib/utils";
 import { Button } from "./ui/button";
 
 type LivenessResult = {
@@ -34,7 +34,7 @@ const IdDocumentLiveness = () => {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch(`${ID_LIVE_BASE_URL}/check_id_liveness`, {
+      const response = await fetch(`${API_BASE_URL}/id_liveness_check`, {
         method: "POST",
         body: formData,
       });

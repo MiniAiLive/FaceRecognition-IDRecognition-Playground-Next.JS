@@ -7,8 +7,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import {
   DATABASE_NAME,
-  FACE_BASE_URL,
-  FACE_LIVE_BASE_URL,
+  API_BASE_URL,
   STORE_NAME,
 } from "@/lib/utils";
 
@@ -48,7 +47,7 @@ const Selfie = () => {
       const formData = new FormData();
       formData.append("file", image);
 
-      const response = await fetch(`${FACE_LIVE_BASE_URL}/check_liveness`, {
+      const response = await fetch(`${API_BASE_URL}/face_liveness_check_v1`, {
         method: "POST",
         body: formData,
       });
@@ -98,7 +97,7 @@ const Selfie = () => {
       formData.append("file1", file1);
       formData.append("file2", file2);
 
-      const response = await fetch(`${FACE_BASE_URL}/face_match`, {
+      const response = await fetch(`${API_BASE_URL}/face_match`, {
         method: "POST",
         body: formData,
       });

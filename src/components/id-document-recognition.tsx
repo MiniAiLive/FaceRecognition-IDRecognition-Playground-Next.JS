@@ -9,7 +9,7 @@ import IdRecognitionResult from "./Id-SDK/id-recognition";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import LoadingPage from "./Loader";
-import { ID_BASE_URL } from "@/lib/utils";
+import { API_BASE_URL } from "@/lib/utils";
 import { Button } from "./ui/button";
 
 const previewImages = [face1, face2, face3, face4];
@@ -27,7 +27,7 @@ const IdRecognition = () => {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch(`${ID_BASE_URL}/check_id`, {
+      const response = await fetch(`${API_BASE_URL}/id_full_check`, {
         method: "POST",
         body: formData,
       });

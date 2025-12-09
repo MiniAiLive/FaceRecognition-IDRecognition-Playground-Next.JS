@@ -10,7 +10,7 @@ import image_6 from "@/assets/face-matching/img5.jpg";
 import image_7 from "@/assets/face-matching/img6.jpg";
 import { toast } from "react-toastify";
 import { useState } from "react";
-import { FACE_BASE_URL } from "@/lib/utils";
+import { API_BASE_URL } from "@/lib/utils";
 import CompareImageUploader from "./CompareImageUploader";
 import LoadingPage from "./Loader";
 
@@ -77,7 +77,7 @@ const FaceMatching = () => {
       formData.append("file2", file2);
 
       // Submit to API
-      const response = await fetch(`${FACE_BASE_URL}/face_match`, {
+      const response = await fetch(`${API_BASE_URL}/face_match`, {
         method: "POST",
         body: formData,
       });

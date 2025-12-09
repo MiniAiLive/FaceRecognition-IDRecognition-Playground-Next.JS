@@ -10,7 +10,7 @@ import face_6 from "@/assets/face-liveness-detection/img6.jpg";
 import FaceLiveDetectionResultBox from "./Face-Live_detection/FaceLiveDetectionResult";
 import { toast } from "react-toastify";
 import LoadingPage from "./Loader";
-import { FACE_LIVE_BASE_URL } from "@/lib/utils";
+import { API_BASE_URL } from "@/lib/utils";
 import { useState } from "react";
 import ImageUploader from "./ImageUploader";
 import { Button } from "./ui/button";
@@ -40,7 +40,7 @@ const FaceLiveDetection = () => {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch(`${FACE_LIVE_BASE_URL}/check_liveness`, {
+      const response = await fetch(`${API_BASE_URL}/face_liveness_check_v1`, {
         method: "POST",
         body: formData,
       });

@@ -9,7 +9,7 @@ import React, { FC, useState } from "react";
 // import image_5 from "@/assets/lience/image-4.png";
 // import image_6 from "@/assets/lience/image-5.png";
 import { toast } from "react-toastify";
-import { ID_BASE_URL } from "@/lib/utils";
+import { API_BASE_URL } from "@/lib/utils";
 interface KYCFormProps {
   router: AppRouterInstance;
 }
@@ -58,7 +58,7 @@ const License: FC<KYCFormProps> = ({ router }) => {
       formData.append("file2", file2);
 
       // Submit to API
-      const response = await fetch(`${ID_BASE_URL}/check_id_multi`, {
+      const response = await fetch(`${API_BASE_URL}/id_multi_full_check`, {
         method: "POST",
         body: formData,
       });

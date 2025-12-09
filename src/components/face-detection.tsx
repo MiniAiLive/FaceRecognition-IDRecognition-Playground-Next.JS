@@ -7,7 +7,7 @@ import face4 from "@/assets/face-detection/img4.jpg";
 import FaceDetectionResultBox from "./Face-SDK/FaceDetectionResultBox";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { FACE_BASE_URL } from "@/lib/utils";
+import { API_BASE_URL } from "@/lib/utils";
 import LoadingPage from "./Loader";
 import { Button } from "./ui/button";
 
@@ -91,7 +91,7 @@ const FaceDetection = () => {
       // setLivenessImage(uploadedImage);
       formData.append("file", file);
 
-      const response = await fetch(`${FACE_BASE_URL}/face_detect`, {
+      const response = await fetch(`${API_BASE_URL}/face_detect`, {
         method: "POST",
         body: formData,
       });
