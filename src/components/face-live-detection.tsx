@@ -11,6 +11,7 @@ import FaceLiveDetectionResultBox from "./Face-Live_detection/FaceLiveDetectionR
 import { toast } from "react-toastify";
 import LoadingPage from "./Loader";
 import { API_BASE_URL } from "@/lib/utils";
+import { PLAYGROUND_TOKEN } from "@/lib/utils";
 import { useState } from "react";
 import ImageUploader from "./ImageUploader";
 import { Button } from "./ui/button";
@@ -42,6 +43,9 @@ const FaceLiveDetection = () => {
 
       const response = await fetch(`${API_BASE_URL}/face_liveness_check_v1`, {
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${PLAYGROUND_TOKEN}`,  // ✅ Add bearer token here
+        },
         body: formData,
       });
 

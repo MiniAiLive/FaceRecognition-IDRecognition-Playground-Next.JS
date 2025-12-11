@@ -10,6 +10,7 @@ import {
   API_BASE_URL,
   STORE_NAME,
 } from "@/lib/utils";
+import { PLAYGROUND_TOKEN } from "@/lib/utils";
 
 import { openDB } from "idb";
 
@@ -49,6 +50,9 @@ const Selfie = () => {
 
       const response = await fetch(`${API_BASE_URL}/face_liveness_check_v1`, {
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${PLAYGROUND_TOKEN}`,  // ✅ Add bearer token here
+        },
         body: formData,
       });
 
@@ -99,6 +103,9 @@ const Selfie = () => {
 
       const response = await fetch(`${API_BASE_URL}/face_match`, {
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${PLAYGROUND_TOKEN}`,  // ✅ Add bearer token here
+        },
         body: formData,
       });
 

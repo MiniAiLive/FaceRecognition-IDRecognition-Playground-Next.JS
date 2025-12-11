@@ -10,6 +10,7 @@ import face_3 from "@/assets/id-document-liveness/img3.png";
 // import face_4 from "@/assets/id-document-liveness/img3.png";
 import LoadingPage from "./Loader";
 import { API_BASE_URL } from "@/lib/utils";
+import { PLAYGROUND_TOKEN } from "@/lib/utils";
 import { Button } from "./ui/button";
 
 type LivenessResult = {
@@ -36,6 +37,9 @@ const IdDocumentLiveness = () => {
 
       const response = await fetch(`${API_BASE_URL}/id_liveness_check`, {
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${PLAYGROUND_TOKEN}`,  // ✅ Add bearer token here
+        },
         body: formData,
       });
 

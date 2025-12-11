@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import LoadingPage from "./Loader";
 import { API_BASE_URL } from "@/lib/utils";
+import { PLAYGROUND_TOKEN } from "@/lib/utils";
 import { Button } from "./ui/button";
 
 const previewImages = [face1, face2, face3, face4];
@@ -29,6 +30,9 @@ const IdRecognition = () => {
 
       const response = await fetch(`${API_BASE_URL}/id_full_check`, {
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${PLAYGROUND_TOKEN}`,  // ✅ Add bearer token here
+        },
         body: formData,
       });
 

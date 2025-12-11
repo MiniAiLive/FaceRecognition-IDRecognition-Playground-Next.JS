@@ -6,6 +6,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 // import image_3 from "@/assets/lience/image-2.png";
 import { toast } from "react-toastify";
 import { API_BASE_URL } from "@/lib/utils";
+import { PLAYGROUND_TOKEN } from "@/lib/utils";
 interface KYCFormProps {
   router: AppRouterInstance;
 }
@@ -27,6 +28,9 @@ const Passport: FC<KYCFormProps> = ({ router}) => {
 
       const response = await fetch(`${API_BASE_URL}/id_full_check`, {
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${PLAYGROUND_TOKEN}`,  // ✅ Add bearer token here
+        },
         body: formData,
       });
 

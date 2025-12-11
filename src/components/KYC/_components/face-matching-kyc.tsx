@@ -10,6 +10,7 @@ import image_5 from "@/assets/face-matching/img5.jpg";
 import image_6 from "@/assets/face-matching/img6.jpg";
 import { toast } from "react-toastify";
 import { API_BASE_URL } from "@/lib/utils";
+import { PLAYGROUND_TOKEN } from "@/lib/utils";
 import KycRadioTik from "@/components/svg/kyc-radio-tik";
 import KycRadio from "@/components/svg/kyc-radio";
 interface KYCFormProps {
@@ -62,6 +63,9 @@ const FaceMatchingKYC: FC<KYCFormProps> = ({ router }) => {
       // Submit to API
       const response = await fetch(`${API_BASE_URL}/face_match`, {
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${PLAYGROUND_TOKEN}`,  // ✅ Add bearer token here
+        },
         body: formData,
       });
 
