@@ -5,11 +5,7 @@ import KycRadio from "../svg/kyc-radio";
 import { useRouter } from "next/navigation";
 
 import { toast } from "react-toastify";
-import {
-  DATABASE_NAME,
-  API_BASE_URL,
-  STORE_NAME,
-} from "@/lib/utils";
+import { DATABASE_NAME, FACE_API_BASE_URL, STORE_NAME } from "@/lib/utils";
 import { PLAYGROUND_TOKEN } from "@/lib/utils";
 
 import { openDB } from "idb";
@@ -48,10 +44,10 @@ const Selfie = () => {
       const formData = new FormData();
       formData.append("file", image);
 
-      const response = await fetch(`${API_BASE_URL}/face_liveness_check_v1`, {
+      const response = await fetch(`${FACE_API_BASE_URL}/check_liveness`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${PLAYGROUND_TOKEN}`,  // ✅ Add bearer token here
+          Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here
         },
         body: formData,
       });
@@ -101,10 +97,10 @@ const Selfie = () => {
       formData.append("file1", file1);
       formData.append("file2", file2);
 
-      const response = await fetch(`${API_BASE_URL}/face_match`, {
+      const response = await fetch(`${FACE_API_BASE_URL}/face_match`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${PLAYGROUND_TOKEN}`,  // ✅ Add bearer token here
+          Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here
         },
         body: formData,
       });
@@ -129,10 +125,10 @@ const Selfie = () => {
 
   const getReferenceImage = (): string | null => {
     const licenseData = JSON.parse(
-      localStorage.getItem(LOCAL_LICENSE_STORAGE_KEY) || "null"
+      localStorage.getItem(LOCAL_LICENSE_STORAGE_KEY) || "null",
     );
     const passportData = JSON.parse(
-      localStorage.getItem(LOCAL_PASSPORT_STORAGE_KEY) || "null"
+      localStorage.getItem(LOCAL_PASSPORT_STORAGE_KEY) || "null",
     );
     return licenseData?.[0]?.Images?.["Portrait-V"]?.image
       ? `data:image/jpeg;base64,${licenseData?.[0]?.Images?.["Portrait-V"]?.image}`
@@ -141,7 +137,7 @@ const Selfie = () => {
 
   const dataURLtoFile = async (
     dataurl: string,
-    filename: string
+    filename: string,
   ): Promise<File | null> => {
     try {
       const [header, base64] = dataurl.split(",");

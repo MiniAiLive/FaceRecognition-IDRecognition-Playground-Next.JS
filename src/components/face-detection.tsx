@@ -7,7 +7,7 @@ import face4 from "@/assets/face-detection/img4.jpg";
 import FaceDetectionResultBox from "./Face-SDK/FaceDetectionResultBox";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { API_BASE_URL } from "@/lib/utils";
+import { FACE_API_BASE_URL } from "@/lib/utils";
 import { PLAYGROUND_TOKEN } from "@/lib/utils";
 import LoadingPage from "./Loader";
 import { Button } from "./ui/button";
@@ -56,7 +56,7 @@ const FaceDetection = () => {
         const response = await fetch(dataurl);
         if (!response.ok) {
           throw new Error(
-            `Failed to fetch data URL: ${response.status} ${response.statusText}`
+            `Failed to fetch data URL: ${response.status} ${response.statusText}`,
           );
         }
         blob = await response.blob();
@@ -92,10 +92,10 @@ const FaceDetection = () => {
       // setLivenessImage(uploadedImage);
       formData.append("file", file);
 
-      const response = await fetch(`${API_BASE_URL}/face_detect`, {
+      const response = await fetch(`${FACE_API_BASE_URL}/face_detect`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${PLAYGROUND_TOKEN}`,  // ✅ Add bearer token here
+          Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here
         },
         body: formData,
       });

@@ -10,7 +10,7 @@ import face_6 from "@/assets/face-liveness-detection/img6.jpg";
 import FaceLiveDetectionResultBox from "./Face-Live_detection/FaceLiveDetectionResult";
 import { toast } from "react-toastify";
 import LoadingPage from "./Loader";
-import { API_BASE_URL } from "@/lib/utils";
+import { FACE_API_BASE_URL } from "@/lib/utils";
 import { PLAYGROUND_TOKEN } from "@/lib/utils";
 import { useState } from "react";
 import ImageUploader from "./ImageUploader";
@@ -28,7 +28,7 @@ const previewImages = [face_1, face_2, face_3, face_4, face_5, face_6];
 
 const FaceLiveDetection = () => {
   const [extractedData, setExtractedData] = useState<ExtractedData | null>(
-    null
+    null,
   );
 
   const [loading, setLoading] = useState(false);
@@ -41,10 +41,10 @@ const FaceLiveDetection = () => {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch(`${API_BASE_URL}/face_liveness_check_v1`, {
+      const response = await fetch(`${FACE_API_BASE_URL}/check_liveness`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${PLAYGROUND_TOKEN}`,  // ✅ Add bearer token here
+          Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here
         },
         body: formData,
       });
@@ -55,7 +55,7 @@ const FaceLiveDetection = () => {
         data["liveness result "] === "Image is spoofed"
       ) {
         toast.error(
-          data["state "] !== "OK" ? data["state "] : data["liveness result "]
+          data["state "] !== "OK" ? data["state "] : data["liveness result "],
         );
       }
       if (!!data) {

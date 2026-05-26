@@ -10,7 +10,7 @@ import image_6 from "@/assets/face-matching/img5.jpg";
 import image_7 from "@/assets/face-matching/img6.jpg";
 import { toast } from "react-toastify";
 import { useState } from "react";
-import { API_BASE_URL } from "@/lib/utils";
+import { FACE_API_BASE_URL } from "@/lib/utils";
 import { PLAYGROUND_TOKEN } from "@/lib/utils";
 import CompareImageUploader from "./CompareImageUploader";
 import LoadingPage from "./Loader";
@@ -78,10 +78,10 @@ const FaceMatching = () => {
       formData.append("file2", file2);
 
       // Submit to API
-      const response = await fetch(`${API_BASE_URL}/face_match`, {
+      const response = await fetch(`${FACE_API_BASE_URL}/face_match`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${PLAYGROUND_TOKEN}`,  // ✅ Add bearer token here
+          Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here
         },
         body: formData,
       });
@@ -109,7 +109,7 @@ const FaceMatching = () => {
   // Convert Data URL to File
   const dataURLtoFile = async (
     dataurl: string,
-    filename: string
+    filename: string,
   ): Promise<File | null> => {
     if (dataurl.startsWith("data:")) {
       try {

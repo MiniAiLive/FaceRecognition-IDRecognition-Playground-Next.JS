@@ -1,7 +1,8 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+export const ID_API_BASE_URL = process.env.NEXT_PUBLIC_ID_API_URL;
+export const FACE_API_BASE_URL = process.env.NEXT_PUBLIC_FACE_API_URL;
 export const PLAYGROUND_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
 
 export function cn(...inputs: ClassValue[]) {

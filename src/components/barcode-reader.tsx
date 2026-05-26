@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import LoadingPage from "./Loader";
 import { Button } from "./ui/button";
-import { API_BASE_URL } from "@/lib/utils";
+import { ID_API_BASE_URL } from "@/lib/utils";
 import { PLAYGROUND_TOKEN } from "@/lib/utils";
 
 const previewImages = [face1, face3, face4];
@@ -29,10 +29,10 @@ const BarcodeReader = () => {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch(`${API_BASE_URL}/id_mrz_check`, {
+      const response = await fetch(`${ID_API_BASE_URL}/id_mrz_check`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${PLAYGROUND_TOKEN}`,  // ✅ Add bearer token here
+          Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here
         },
         body: formData,
       });

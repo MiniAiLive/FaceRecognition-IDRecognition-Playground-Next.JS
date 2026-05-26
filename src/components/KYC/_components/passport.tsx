@@ -5,7 +5,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 // import image_2 from "@/assets/lience/image-1.png";
 // import image_3 from "@/assets/lience/image-2.png";
 import { toast } from "react-toastify";
-import { API_BASE_URL } from "@/lib/utils";
+import { ID_API_BASE_URL } from "@/lib/utils";
 import { PLAYGROUND_TOKEN } from "@/lib/utils";
 interface KYCFormProps {
   router: AppRouterInstance;
@@ -13,7 +13,7 @@ interface KYCFormProps {
 const LOCAL_STORAGE_KEY = "kycPassportData";
 // const previewImages = [image_1, image_2, image_3];
 
-const Passport: FC<KYCFormProps> = ({ router}) => {
+const Passport: FC<KYCFormProps> = ({ router }) => {
   // const [extractedData, setExtractedData] = useState({});
   // const [extractedImages, setExtractedImages] = useState({});
 
@@ -26,10 +26,10 @@ const Passport: FC<KYCFormProps> = ({ router}) => {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch(`${API_BASE_URL}/id_full_check`, {
+      const response = await fetch(`${ID_API_BASE_URL}/id_full_check`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${PLAYGROUND_TOKEN}`,  // ✅ Add bearer token here
+          Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here
         },
         body: formData,
       });
@@ -82,7 +82,9 @@ const Passport: FC<KYCFormProps> = ({ router}) => {
   };
 
   return (
-    <div className={`lg:w-[450px] lg:flex flex-col gap-x-4 lg:h-[550px] w-full mx-auto`}>
+    <div
+      className={`lg:w-[450px] lg:flex flex-col gap-x-4 lg:h-[550px] w-full mx-auto`}
+    >
       {/* image */}
       <div className="flex mx-auto lg:h-[500px] lg:w-[450px]">
         <ImageUploader
