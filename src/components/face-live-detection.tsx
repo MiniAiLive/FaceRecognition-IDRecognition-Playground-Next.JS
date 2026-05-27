@@ -10,7 +10,7 @@ import face_6 from "@/assets/face-liveness-detection/img6.jpg";
 import FaceLiveDetectionResultBox from "./Face-Live_detection/FaceLiveDetectionResult";
 import { toast } from "react-toastify";
 import LoadingPage from "./Loader";
-import { FACE_API_BASE_URL } from "@/lib/utils";
+import { FACE_LIVE_API_BASE_URL } from "@/lib/utils";
 import { PLAYGROUND_TOKEN } from "@/lib/utils";
 import { useState } from "react";
 import ImageUploader from "./ImageUploader";
@@ -41,7 +41,7 @@ const FaceLiveDetection = () => {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch(`${FACE_API_BASE_URL}/check_liveness`, {
+      const response = await fetch(`${FACE_LIVE_API_BASE_URL}/check_liveness`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here

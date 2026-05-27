@@ -9,7 +9,7 @@ import face2 from "@/assets/card/img2.png";
 import face3 from "@/assets/card/img3.png";
 import face4 from "@/assets/card/img4.png";
 import LoadingPage from "./Loader";
-import { ID_API_BASE_URL, PLAYGROUND_TOKEN } from "@/lib/utils";
+import { ID_RECOG_API_BASE_URL, PLAYGROUND_TOKEN } from "@/lib/utils";
 import { Button } from "./ui/button";
 
 const previewImages = [face1, face2, face3, face4];
@@ -27,7 +27,7 @@ const CardReader = () => {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch(`${ID_API_BASE_URL}/id_credit_check`, {
+      const response = await fetch(`${ID_RECOG_API_BASE_URL}/id_credit_check`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here

@@ -10,7 +10,7 @@ import image_6 from "@/assets/face-matching/img5.jpg";
 import image_7 from "@/assets/face-matching/img6.jpg";
 import { toast } from "react-toastify";
 import { useState } from "react";
-import { FACE_API_BASE_URL } from "@/lib/utils";
+import { FACE_RECOG_API_BASE_URL } from "@/lib/utils";
 import { PLAYGROUND_TOKEN } from "@/lib/utils";
 import CompareImageUploader from "./CompareImageUploader";
 import LoadingPage from "./Loader";
@@ -74,18 +74,18 @@ const FaceMatching = () => {
 
       // Prepare form data
       const formData = new FormData();
-      formData.append("file1", file1);
-      formData.append("file2", file2);
-
+      formData.append("image1", file1);
+      formData.append("image2", file2);
+      console.log("FACE_RECOG_API_BASE_URL", FACE_RECOG_API_BASE_URL);
       // Submit to API
-      const response = await fetch(`${FACE_API_BASE_URL}/face_match`, {
+      const response = await fetch(`/api/proxy/face_match`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here
         },
         body: formData,
       });
-
+      // response body consumed here
       if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`);
       }

@@ -9,7 +9,7 @@ import React, { FC, useState } from "react";
 // import image_5 from "@/assets/lience/image-4.png";
 // import image_6 from "@/assets/lience/image-5.png";
 import { toast } from "react-toastify";
-import { ID_API_BASE_URL } from "@/lib/utils";
+import { ID_RECOG_API_BASE_URL } from "@/lib/utils";
 import { PLAYGROUND_TOKEN } from "@/lib/utils";
 interface KYCFormProps {
   router: AppRouterInstance;
@@ -59,13 +59,16 @@ const License: FC<KYCFormProps> = ({ router }) => {
       formData.append("file2", file2);
 
       // Submit to API
-      const response = await fetch(`${ID_API_BASE_URL}/id_multi_full_check`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here
+      const response = await fetch(
+        `${ID_RECOG_API_BASE_URL}/id_multi_full_check`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here
+          },
+          body: formData,
         },
-        body: formData,
-      });
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`);

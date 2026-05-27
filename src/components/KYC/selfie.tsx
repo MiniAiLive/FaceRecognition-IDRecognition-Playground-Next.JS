@@ -5,7 +5,7 @@ import KycRadio from "../svg/kyc-radio";
 import { useRouter } from "next/navigation";
 
 import { toast } from "react-toastify";
-import { DATABASE_NAME, FACE_API_BASE_URL, STORE_NAME } from "@/lib/utils";
+import { DATABASE_NAME, FACE_LIVE_API_BASE_URL, STORE_NAME } from "@/lib/utils";
 import { PLAYGROUND_TOKEN } from "@/lib/utils";
 
 import { openDB } from "idb";
@@ -44,7 +44,7 @@ const Selfie = () => {
       const formData = new FormData();
       formData.append("file", image);
 
-      const response = await fetch(`${FACE_API_BASE_URL}/check_liveness`, {
+      const response = await fetch(`${FACE_LIVE_API_BASE_URL}/check_liveness`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here
@@ -97,7 +97,7 @@ const Selfie = () => {
       formData.append("file1", file1);
       formData.append("file2", file2);
 
-      const response = await fetch(`${FACE_API_BASE_URL}/face_match`, {
+      const response = await fetch(`/api/proxy/face_match`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here
