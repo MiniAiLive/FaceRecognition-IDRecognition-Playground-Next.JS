@@ -36,7 +36,7 @@ const IdDocumentLiveness = () => {
       formData.append("file", file);
 
       const response = await fetch(
-        `${ID_LIVE_API_BASE_URL}/check_id_liveness`,
+        `/api/proxy/id-live/check_id_liveness`,
         {
           method: "POST",
           headers: {

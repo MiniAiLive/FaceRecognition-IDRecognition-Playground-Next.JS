@@ -9,7 +9,6 @@ import IdRecognitionResult from "./Id-SDK/id-recognition";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import LoadingPage from "./Loader";
-import { ID_RECOG_API_BASE_URL } from "@/lib/utils";
 import { PLAYGROUND_TOKEN } from "@/lib/utils";
 import { Button } from "./ui/button";
 
@@ -28,7 +27,7 @@ const IdRecognition = () => {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch(`${ID_RECOG_API_BASE_URL}/id_full_check`, {
+      const response = await fetch(`/api/proxy/id/check_id`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here

@@ -78,7 +78,7 @@ const FaceMatching = () => {
       formData.append("image2", file2);
       console.log("FACE_RECOG_API_BASE_URL", FACE_RECOG_API_BASE_URL);
       // Submit to API
-      const response = await fetch(`/api/proxy/face_match`, {
+      const response = await fetch(`/api/proxy/face/face_match`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here

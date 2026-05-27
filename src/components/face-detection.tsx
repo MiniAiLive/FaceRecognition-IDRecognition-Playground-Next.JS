@@ -91,7 +91,7 @@ const FaceDetection = () => {
       // setLivenessImage(uploadedImage);
       formData.append("file", file);
 
-      const response = await fetch(`/api/proxy/face_detect`, {
+      const response = await fetch(`/api/proxy/face/face_detect`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here

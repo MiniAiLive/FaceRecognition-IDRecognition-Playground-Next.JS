@@ -60,7 +60,7 @@ const FaceMatchingKYC: FC<KYCFormProps> = ({ router }) => {
       formData.append("file2", file2);
 
       // Submit to API
-      const response = await fetch(`/api/proxy/face_match`, {
+      const response = await fetch(`/api/proxy/face/face_match`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here

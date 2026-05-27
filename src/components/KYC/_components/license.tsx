@@ -59,16 +59,13 @@ const License: FC<KYCFormProps> = ({ router }) => {
       formData.append("file2", file2);
 
       // Submit to API
-      const response = await fetch(
-        `${ID_RECOG_API_BASE_URL}/id_multi_full_check`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here
-          },
-          body: formData,
+      const response = await fetch(`/api/proxy/id/check_id_multi`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here
         },
-      );
+        body: formData,
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`);
