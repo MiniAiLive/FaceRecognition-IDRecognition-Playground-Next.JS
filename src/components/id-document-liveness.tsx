@@ -9,7 +9,6 @@ import face_2 from "@/assets/id-document-liveness/img2.jpg";
 import face_3 from "@/assets/id-document-liveness/img3.png";
 // import face_4 from "@/assets/id-document-liveness/img3.png";
 import LoadingPage from "./Loader";
-import { ID_LIVE_API_BASE_URL } from "@/lib/utils";
 import { PLAYGROUND_TOKEN } from "@/lib/utils";
 import { Button } from "./ui/button";
 
@@ -35,16 +34,13 @@ const IdDocumentLiveness = () => {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch(
-        `/api/proxy/id-live/check_id_liveness`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here
-          },
-          body: formData,
+      const response = await fetch(`/api/proxy/id-live/check_id_liveness`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${PLAYGROUND_TOKEN}`, // ✅ Add bearer token here
         },
-      );
+        body: formData,
+      });
 
       const data = await response.json();
 

@@ -9,7 +9,6 @@ import React, { FC, useState } from "react";
 // import image_5 from "@/assets/lience/image-4.png";
 // import image_6 from "@/assets/lience/image-5.png";
 import { toast } from "react-toastify";
-import { ID_RECOG_API_BASE_URL } from "@/lib/utils";
 import { PLAYGROUND_TOKEN } from "@/lib/utils";
 interface KYCFormProps {
   router: AppRouterInstance;
