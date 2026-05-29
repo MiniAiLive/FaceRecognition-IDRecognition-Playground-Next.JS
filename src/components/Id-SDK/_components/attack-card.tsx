@@ -132,10 +132,7 @@ const AttackCard: React.FC<Props> = ({ data }) => {
   );
 
   // Check if document is Real or Fake
-  const isReal =
-    screenReplay!.liveness_probability > 0.5 &&
-    printedCopy!.liveness_probability > 0.5 &&
-    portraitSubstitution!.liveness_probability > 0.5;
+  const isReal = portraitSubstitution!.liveness_probability > 0.9;
 
   return (
     <div className="rounded-[20px] h-[600px] overflow-y-auto bg-white p-4 shadow-md">

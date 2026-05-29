@@ -30,7 +30,6 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
   showImageHeight,
 }) => {
   const webcamRef = useRef<Webcam>(null);
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [isCameraOpen, setIsCameraOpen] = useState(false);
 
   const onDrop = useCallback(
@@ -59,16 +58,13 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
     [setUploadedImage]
   );
 
-  const { getRootProps, getInputProps } = useDropzone({
+  const { getRootProps, getInputProps, open } = useDropzone({
     onDrop,
     accept: { "image/*": [] },
   });
 
   const handleUploadClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-      setUploadedImage("");
-    }
+    open();
   };
 
   const openCamera = () => {
@@ -109,7 +105,6 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
         )}
         <input
           {...getInputProps()}
-          ref={fileInputRef}
           style={{ display: "none" }}
         />
         {uploadedImage || isCameraOpen ? (
